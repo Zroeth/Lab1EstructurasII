@@ -1,0 +1,13 @@
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.exe
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.deps.json
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.runtimeconfig.json
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.runtimeconfig.dev.json
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.dll
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\bin\Debug\netcoreapp3.1\Arbol y pruebas.pdb
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.AssemblyInfoInputs.cache
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.AssemblyInfo.cs
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.csproj.CoreCompileInputs.cache
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.dll
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.pdb
+C:\Users\Zer0\source\repos\Lab1\Arbol y pruebas\obj\Debug\netcoreapp3.1\Arbol y pruebas.genruntimeconfig.cache
