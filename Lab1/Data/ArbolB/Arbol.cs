@@ -17,6 +17,7 @@ namespace Lab1.Data.ArbolB
         {
             if (grado < 3 || grado % 2 == 0)
             {
+
                 throw new ArgumentException("El grado debe ser mayor o igual a 3 e impar");
             }
 
@@ -45,15 +46,15 @@ namespace Lab1.Data.ArbolB
             return nodo.EsHoja ? null : this.BusquedaInterna(nodo.Hijos[i], llave);
         }
 
-        public List<TK> RecorrerIn()
+        public List<string> RecorrerIn()
         {
-            List<TK> recorrido = new List<TK>();
+            List<string> recorrido = new List<string>();
             if (Raiz != null) Raiz.RecorrerIn(recorrido);
             return recorrido;
         }
-        public List<TK> RecorrerPost()
+        public List<string> RecorrerPost()
         {
-            List<TK> recorrido = new List<TK>();
+            List<string> recorrido = new List<string>();
             if (Raiz != null) Raiz.RecorrerPost(recorrido);
             return recorrido;
         }
@@ -68,7 +69,14 @@ namespace Lab1.Data.ArbolB
             if (Raiz != null) Raiz.RecorrerPost();
         }
         */
-        public void Mostrar()
+
+        public List<string> RecorrerPre()
+        {
+            List<string> recorrido = new List<string>();
+            if (Raiz != null) Mostrar(recorrido);
+            return recorrido;
+        }
+        public void Mostrar(List<string> recorrido)
         {
             var nivelActual = new List<Nodo<TK, TP>>
             {
@@ -78,7 +86,7 @@ namespace Lab1.Data.ArbolB
             while (nivelActual != null && nivelActual.Any())
             {
                 var siguienteNivel = new List<Nodo<TK, TP>>();
-                var datos = "";
+                string datos = "";
 
                 foreach (var node in nivelActual)
                 {
@@ -88,12 +96,13 @@ namespace Lab1.Data.ArbolB
                     }
                     foreach (var entry in node.Entradas)
                     {
-                        datos += entry.Dato + " ";
+                        datos += entry.Dato + " " + " | ";
                     }
                 }
 
                 Console.WriteLine(datos);
-
+                recorrido.Add(datos);
+                recorrido.Add("|||||||");
                 nivelActual = siguienteNivel;
             }
         }
@@ -129,7 +138,7 @@ namespace Lab1.Data.ArbolB
             }
             else
             {
-                Console.WriteLine("Dado ya existe en el arbol y su informacion es: " + nuevoApuntador);
+                throw new ArgumentException("Dato ya existe en el arbol y su informacion es: " + nuevoApuntador);
             }
         }
 

@@ -17,29 +17,33 @@ namespace Lab1.Controllers
     {
 
         [HttpGet]
-        public Arbol<int, int> Get()
+        public Arbol<string, string> Get()
         {
             return Singleton.GetInstance.miarbol;
         }
 
         [HttpGet("{recorrido}")]
-        public List<int> Get([FromRoute] string recorrido)
+        public List<string> Get([FromRoute] string recorrido)
         {
             if (recorrido == "in")
             {
                 return Singleton.GetInstance.miarbol.RecorrerIn();
             }
+            else if (recorrido == "pre")
+            {
+                return Singleton.GetInstance.miarbol.RecorrerPre();
+            }
             else if (recorrido == "post")
             {
                 return Singleton.GetInstance.miarbol.RecorrerPost();
             }
-            return new List<int>();
+            return new List<string>();
         }
 
         [HttpDelete]
         public ActionResult Delete()
         {
-            Singleton.GetInstance.miarbol = new Arbol<int, int>(3);
+            Singleton.GetInstance.miarbol = new Arbol<string, string>(Singleton.GetInstance.miarbol.Grado);
             return Ok("Arbol Limpiado");
         }
 
@@ -55,7 +59,7 @@ namespace Lab1.Controllers
                     Console.Write("No se aceptan menores a Grado 3");
                     return StatusCode(500);
                 }
-                Singleton.GetInstance.miarbol = new Arbol<int, int>(grado);
+                Singleton.GetInstance.miarbol = new Arbol<string, string>(grado);
                 return Ok("Se inicializa árbol con grado " + grado);
             }
             catch (Exception)
@@ -71,13 +75,12 @@ namespace Lab1.Controllers
             Console.Write(input.ToString());
             try
             {
-                int idx;
-                for (idx = 0; idx < input.elementos.Count; idx++)
-                {
-                    int elemento = input.elementos[idx];
-                    Singleton.GetInstance.miarbol.Insertar(elemento, 0);
-                }
-                return Ok("Se agregaron " + idx + " elementos");
+                string title = input.title;
+                string valor= "{" + input.director + ", " + input.imdbRating + ", " + input.genre + ", " + input.releaseDate + ", " 
+                    + input.rottenTomatoesRating + ", " + input.title + "}";
+                Singleton.GetInstance.miarbol.Insertar(title, valor);
+
+                return Ok("Se agrego " + title + " elementos");
             }
             catch (Exception)
             {
@@ -87,7 +90,7 @@ namespace Lab1.Controllers
 
         [Route("populate/{id}")]
         [HttpDelete("{id}")]
-        public ActionResult PopulateDelete([FromRoute] int id)
+        public ActionResult PopulateDelete([FromRoute] string id)
         {
             try
             {

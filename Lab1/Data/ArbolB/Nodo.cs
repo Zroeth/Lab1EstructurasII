@@ -40,7 +40,7 @@ namespace Lab1.Data.ArbolB
             }
         }
 
-        public void RecorrerIn(List<TK> recorrido)
+        public void RecorrerIn(List<string> recorrido)
         {
             int i;
             for (i = 0; i < Entradas.Count; i++)
@@ -50,7 +50,7 @@ namespace Lab1.Data.ArbolB
                     Hijos[i].RecorrerIn(recorrido);
                 }
                 Console.Write(" " + Entradas[i].Dato);
-                recorrido.Add(Entradas[i].Dato);
+                recorrido.Add(Entradas[i].Dato+"|");
             }
             if (!EsHoja)
             {
@@ -58,7 +58,7 @@ namespace Lab1.Data.ArbolB
             }
         }
 
-        public void RecorrerPost(List<TK> recorrido)
+        public void RecorrerPost(List<string> recorrido)
         {
             int i;
 
@@ -70,7 +70,7 @@ namespace Lab1.Data.ArbolB
                     continue;
                 }
                 Console.Write(" " + Entradas[i].Dato);
-                recorrido.Add(Entradas[i].Dato);
+                recorrido.Add(Entradas[i].Dato+"|");
             }
 
             if (!EsHoja)
