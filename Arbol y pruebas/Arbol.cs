@@ -45,34 +45,45 @@ namespace Arbol_y_pruebas
             return nodo.EsHoja ? null : this.BusquedaInterna(nodo.Hijos[i], llave);
         }
 
-        public Datos<TK, TP> MostrarP(ref int aux)
+
+
+        public void RecorrerIn()
         {
-            return this.Mostrar(this.Raiz,ref aux);
+            if (Raiz != null) Raiz.RecorrerIn();
         }
-
-        private Datos<TK, TP> Mostrar(Nodo<TK, TP> nodo,ref int aux)
+        public void RecorrerPost()
         {
-            int i = aux;
-            if (aux < nodo.Entradas.Count)
+            if (Raiz != null) Raiz.RecorrerPost();
+        }
+        public void Mostrar()
+        {
+            var nivelActual = new List<Nodo<TK, TP>>
             {
+                Raiz
+            };
 
-                aux++;
-                return nodo.Entradas[i];
-            }
-            aux++;
+            while (nivelActual != null && nivelActual.Any())
+            {
+                var siguienteNivel = new List<Nodo<TK, TP>>();
+                var datos = "";
 
-            if(nodo.EsHoja)
-            {
-                return null;
-            }
-            else
-            {
-               
-                return this.Mostrar(nodo.Hijos[i], ref aux);   
+                foreach (var node in nivelActual)
+                {
+                    if (node.Hijos.Any())
+                    {
+                        siguienteNivel.AddRange(node.Hijos);
+                    }
+                    foreach (var entry in node.Entradas)
+                    {
+                        datos += entry.Dato + " ";
+                    }
+                }
+
+                Console.WriteLine(datos);
+
+                nivelActual = siguienteNivel;
             }
         }
-
-    
 
 
 
@@ -83,20 +94,30 @@ namespace Arbol_y_pruebas
          */
         public void Insertar(TK nuevoDato, TP nuevoApuntador)
         {
-            // si hay espacio en el nodo raiz
-            if (!this.Raiz.MaximaEntradas)
-            {
-                this.InsertarEnNodo(this.Raiz, nuevoDato, nuevoApuntador);
-                return;
-            }
 
-            // crear un nuevo nodo y separarlo
-            Nodo<TK, TP> anteriorRaiz = this.Raiz;
-            this.Raiz = new Nodo<TK, TP>(this.Grado);
-            this.Raiz.Hijos.Add(anteriorRaiz);
-            this.SepararHijo(this.Raiz, 0, anteriorRaiz);
-            this.InsertarEnNodo(this.Raiz, nuevoDato, nuevoApuntador);
-            this.Altura++;
+            //verificar que el dato no existe en el nodo
+            if (Buscar(nuevoDato) == null)
+            {
+
+                // si hay espacio en el nodo raiz
+                if (!this.Raiz.MaximaEntradas)
+                {
+                    this.InsertarEnNodo(this.Raiz, nuevoDato, nuevoApuntador);
+                    return;
+                }
+
+                // crear un nuevo nodo y separarlo
+                Nodo<TK, TP> anteriorRaiz = this.Raiz;
+                this.Raiz = new Nodo<TK, TP>(this.Grado);
+                this.Raiz.Hijos.Add(anteriorRaiz);
+                this.SepararHijo(this.Raiz, 0, anteriorRaiz);
+                this.InsertarEnNodo(this.Raiz, nuevoDato, nuevoApuntador);
+                this.Altura++;
+            }
+            else
+            {
+                Console.WriteLine("Dado ya existe en el arbol y su informacion es: " + nuevoApuntador);
+            }
         }
 
         private void InsertarEnNodo(Nodo<TK, TP> nodo, TK nuevoDato, TP nuevoApuntador)
@@ -152,15 +173,15 @@ namespace Arbol_y_pruebas
         public void Borrar(TK datoABorrar)
         {
             this.BorrarInterior(this.Raiz, datoABorrar);
-
-            // if root's last entry was moved to a child node, remove it
+            /*Si la ultima entrada de la raiz fue movida al nodo hijo, se remueve;
+             * */
             if (this.Raiz.Entradas.Count == 0 && !this.Raiz.EsHoja)
             {
                 this.Raiz = this.Raiz.Hijos.Single();
                 this.Altura--;
             }
         }
-    
+
         /*BORRA el dato de un nodo hoja o un nodo interno
          */
         private void BorrarDatodeNodo(Nodo<TK, TP> nodo, TK datoABorrar, int indexdelDatoEnNodo)
@@ -206,15 +227,14 @@ namespace Arbol_y_pruebas
         private void BorrarInterior(Nodo<TK, TP> nodo, TK datoABorrar)
         {
             int i = nodo.Entradas.TakeWhile(entry => datoABorrar.CompareTo(entry.Dato) > 0).Count();
-
-            // found key in node, so delete if from it
+            //llave encontrada, se borra
             if (i < nodo.Entradas.Count && nodo.Entradas[i].Dato.CompareTo(datoABorrar) == 0)
             {
                 this.BorrarDatodeNodo(nodo, datoABorrar, i);
                 return;
             }
 
-            // delete key from subtree
+            //borrar llave del subarbol
             if (!nodo.EsHoja)
             {
                 this.BorrarDatodeSubArbol(nodo, datoABorrar, i);
@@ -241,7 +261,7 @@ namespace Arbol_y_pruebas
 
                 if (hermanoIzquierdo != null && hermanoIzquierdo.Entradas.Count > this.Grado - 1)
                 {
-                     
+
                     /* El hermano izquierdo tiene un espacio en el nodo para prestar, mueve el dato 
                      * disponible al nodo que lo necesita al nodo padre
                      */

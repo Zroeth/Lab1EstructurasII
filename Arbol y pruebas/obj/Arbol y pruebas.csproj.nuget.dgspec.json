@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zer0\\source\\repos\\Lab1\\Arbol y pruebas\\Arbol y pruebas.csproj": {}
+    "C:\\Users\\Zer0\\source\\repos\\Lab1EstructurasII\\Arbol y pruebas\\Arbol y pruebas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zer0\\source\\repos\\Lab1\\Arbol y pruebas\\Arbol y pruebas.csproj": {
+    "C:\\Users\\Zer0\\source\\repos\\Lab1EstructurasII\\Arbol y pruebas\\Arbol y pruebas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zer0\\source\\repos\\Lab1\\Arbol y pruebas\\Arbol y pruebas.csproj",
+        "projectUniqueName": "C:\\Users\\Zer0\\source\\repos\\Lab1EstructurasII\\Arbol y pruebas\\Arbol y pruebas.csproj",
         "projectName": "Arbol y pruebas",
-        "projectPath": "C:\\Users\\Zer0\\source\\repos\\Lab1\\Arbol y pruebas\\Arbol y pruebas.csproj",
+        "projectPath": "C:\\Users\\Zer0\\source\\repos\\Lab1EstructurasII\\Arbol y pruebas\\Arbol y pruebas.csproj",
         "packagesPath": "C:\\Users\\Zer0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zer0\\source\\repos\\Lab1\\Arbol y pruebas\\obj\\",
+        "outputPath": "C:\\Users\\Zer0\\source\\repos\\Lab1EstructurasII\\Arbol y pruebas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "D:\\Roaming\\NuGet\\NuGet.Config",

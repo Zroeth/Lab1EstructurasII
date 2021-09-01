@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Arbol_y_pruebas
 {
-    public class Nodo<TK,TP>
+    public class Nodo<TK, TP>
     {
         private int grado;
         public List<Nodo<TK, TP>> Hijos { get; set; }
@@ -38,6 +38,45 @@ namespace Arbol_y_pruebas
             {
                 return this.Entradas.Count == this.grado - 1;
             }
+        }
+
+        public void RecorrerIn()
+        {
+            int i;
+            for (i = 0; i < Entradas.Count; i++)
+            {
+                if (!EsHoja)
+                {
+                    Hijos[i].RecorrerIn();
+                }
+                Console.Write(" " + Entradas[i].Dato);
+            }
+            if (!EsHoja)
+            {
+                Hijos[i].RecorrerIn();
+            }
+        }
+        string cadena;
+        public void RecorrerPost()
+        {
+            int i;
+
+            for (i = 0; i < Entradas.Count; i++)
+            {
+                if (!EsHoja)
+                {
+                    Hijos[i].RecorrerIn();
+                    continue;
+                }
+                Console.Write(" " + Entradas[i].Dato);
+            }
+
+            if (!EsHoja)
+            {
+                Hijos[i].RecorrerPost();
+            }
+
+
         }
     }
 }
